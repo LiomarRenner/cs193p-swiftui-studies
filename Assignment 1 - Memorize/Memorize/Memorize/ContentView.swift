@@ -8,16 +8,56 @@
 import SwiftUI
 
 struct ContentView: View {
-    let emojis: Array<String> = ["👽", "🛸", "👾", "🐈‍⬛"]
-
+    let emojis: Array<String> = ["👽", "🛸", "👾", "🐈‍⬛", "👻", "☠️", "💀", "🐍", "🕸️", "🦉", "🦇", "🎃"]
+    @State var cardCount: Int = 4
+    
     var body: some View {
+        VStack {
+            ScrollView {
+                cards
+            }
+            Spacer()
+            cardCountAdjusters
+        }
+        .padding()
+    }
+    
+    var cardCountAdjusters: some View {
         HStack {
-            ForEach(emojis.indices, id: \.self) { index in
+            cardRemover
+            Spacer()
+            cardAdder
+        }
+        .imageScale(.large)
+        .font(.largeTitle)
+    }
+    
+    var cards: some View {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))]) {
+            ForEach(0..<cardCount, id: \.self) { index in
                 CardView(content: emojis[index])
+                    .aspectRatio(contentMode: .fit)
             }
         }
         .foregroundColor(.purple)
-        .padding()
+    }
+    
+    func cardCountAdjuster(by offset: Int, symbol: String) -> some View {
+        Button(action: {
+            cardCount += offset
+        }, label: {
+            Image(systemName: symbol)
+        })
+        .disabled(cardCount + offset < 2 || cardCount + offset > emojis.count)
+        
+    }
+    
+    var cardRemover: some View {
+        return cardCountAdjuster(by: -2, symbol: "minus.circle.fill")
+    }
+    
+    var cardAdder: some View {
+        return cardCountAdjuster(by: +2, symbol: "plus.circle.fill")
     }
 }
 
@@ -28,13 +68,12 @@ struct CardView: View {
     var body: some View {
         ZStack {
             let baseRR: RoundedRectangle = RoundedRectangle(cornerRadius: 16)
-            if isFaceUp {
-                baseRR.foregroundColor(.white)
+            Group {
+                baseRR.fill(.white)
                 baseRR.strokeBorder(lineWidth: 2)
                 Text(content).font(.largeTitle)
-            } else {
-                baseRR
             }
+            baseRR.fill().opacity(isFaceUp ? 0 : 1)
         }
         .onTapGesture {
             print("tapped")
