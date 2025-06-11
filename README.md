@@ -8,10 +8,20 @@ This repository contains my implementations of exercises and assignments from St
 
 I created this repo to strengthen my SwiftUI fundamentals and reinforce core iOS concepts as part of my transition from cross-platform to native mobile development.
 
+## 🧑‍🏫 Lectures
+
+| Lectures         | Topics Covered                        |
+|------------------|----------------------------------------|
+| Lecture 1–3       | SwiftUI Basics, Views, State           |
+| Lecture 4–5       | MVVM Pattern, ViewModel, Bindings      |
+| Lecture 6–9       | Animations, Transitions, Gestures      |
+
+Each lecture is implemented in its own folder, reflecting the instructor’s live coding.
+
 ## 🧪 Assignments
 
-- [x] Assignment 1 – Memorize
-- [x] Assignment 2 – Emoji Memory Game
+- [ ] Assignment 1 – Memorize
+- [ ] Assignment 2 – Emoji Memory Game
 - [ ] Assignment 3 – Set Game
 - [ ] Assignment 4 – Calculator App
 
@@ -22,3 +32,5 @@ I created this repo to strengthen my SwiftUI fundamentals and reinforce core iOS
 This is a learning-based repository and will be updated regularly as I progress through the course.
 
 ---
+
+📎 Official course website: [cs193p.stanford.edu/2023](https://cs193p.stanford.edu/2023)
