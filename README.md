@@ -12,9 +12,12 @@ I created this repo to strengthen my SwiftUI fundamentals and reinforce core iOS
 
 | Lectures         | Topics Covered                        |
 |------------------|----------------------------------------|
-| Lecture 1–3       | SwiftUI Basics, Views, State           |
-| Lecture 4–5       | MVVM Pattern, ViewModel, Bindings      |
-| Lecture 6–9       | Animations, Transitions, Gestures      |
+| Lecture 1–3       | SwiftUI Basics, Views, State, MVVM Pattern    |
+| Lecture 4–5       | Applying MVVM, ViewModel, Bindings, Protocols, Enums, Optionals   |
+| Lecture 6–7       | Layout, @ViewBuilder, Shapes, ViewModifiers, Constants    |
+| Lecture 8-9       | Animations, Transitions     |
+| Lecture 10-12     | Gestures, Persistence, Property Wrappers  |
+| Lecture 13-15     | Presenting Views, Navigation, Multithreading, Error Handling, Swift Concurrency (async/await), Document-Based Apps  |
 
 Each lecture is implemented in its own folder, reflecting the instructor’s live coding.
 
@@ -23,7 +26,9 @@ Each lecture is implemented in its own folder, reflecting the instructor’s liv
 - [ ] Assignment 1 – Memorize
 - [ ] Assignment 2 – Emoji Memory Game
 - [ ] Assignment 3 – Set Game
-- [ ] Assignment 4 – Calculator App
+- [ ] Assignment 4 – Animated Set
+- [ ] Assignment 5 – Emoji Art
+- [ ] Assignment 6 – Memorize Themes
 
 *(Each assignment is located in a separate folder.)*
 
