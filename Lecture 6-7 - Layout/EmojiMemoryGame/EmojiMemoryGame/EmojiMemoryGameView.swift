@@ -47,7 +47,19 @@ struct EmojiMemoryGameView: View {
         size: CGSize,
         atAspectRatio aspectRatio: CGFloat
     ) -> CGFloat {
-        return 85
+        let count = CGFloat(count)
+        var columnCount = 1.0
+        repeat {
+            let width = size.width / columnCount
+            let height = width / aspectRatio
+            
+            let rowCount = (count / columnCount).rounded(.up)
+            if rowCount * height < size.height {
+                return (size.width / columnCount).rounded(.down)
+            }
+            columnCount += 1
+        } while columnCount < count
+        return min(size.width / count, size.height * aspectRatio).rounded(.down)
     }
 }
 
