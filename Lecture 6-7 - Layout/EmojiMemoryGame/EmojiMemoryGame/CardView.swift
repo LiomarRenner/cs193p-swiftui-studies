@@ -25,6 +25,10 @@ struct CardView: View {
             static let smallest: CGFloat = 10
             static let scaleFactor = smallest / largest
         }
+        struct Pie {
+            static let opacity: CGFloat = 0.5
+            static let inset: CGFloat = 5
+        }
     }
     
     var body: some View {
@@ -33,11 +37,22 @@ struct CardView: View {
             Group {
                 baseRR.fill(.white)
                 baseRR.strokeBorder(lineWidth: Constants.lineWidth)
-                Text(card.content)
-                    .font(.system(size: Constants.FontSize.largest))
-                    .minimumScaleFactor(Constants.FontSize.scaleFactor)
-                    .aspectRatio(1, contentMode: .fit)
+                Path { p in
+                    p.move(to: .zero)
+                    p.addLine(to: CGPoint(x: 100, y: 100))
+                }
+                Pie(endAngle: .degrees(240))
+                    .opacity(Constants.Pie.opacity)
+                    .overlay(
+                        Text(card.content)
+                            .font(.system(size: Constants.FontSize.largest))
+                            .minimumScaleFactor(Constants.FontSize.scaleFactor)
+                            .multilineTextAlignment(.center)
+                            .aspectRatio(1, contentMode: .fit)
+                            .padding(Constants.Pie.inset)
+                    )
                     .padding(Constants.inset)
+
             }
                 .opacity(card.isFaceUp ? 1 : 0)
             baseRR.fill()
