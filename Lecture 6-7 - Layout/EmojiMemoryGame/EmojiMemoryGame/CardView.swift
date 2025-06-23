@@ -32,33 +32,19 @@ struct CardView: View {
     }
     
     var body: some View {
-        ZStack {
-            let baseRR: RoundedRectangle = RoundedRectangle(cornerRadius: Constants.cornerRadius)
-            Group {
-                baseRR.fill(.white)
-                baseRR.strokeBorder(lineWidth: Constants.lineWidth)
-                Path { p in
-                    p.move(to: .zero)
-                    p.addLine(to: CGPoint(x: 100, y: 100))
-                }
-                Pie(endAngle: .degrees(240))
-                    .opacity(Constants.Pie.opacity)
-                    .overlay(
-                        Text(card.content)
-                            .font(.system(size: Constants.FontSize.largest))
-                            .minimumScaleFactor(Constants.FontSize.scaleFactor)
-                            .multilineTextAlignment(.center)
-                            .aspectRatio(1, contentMode: .fit)
-                            .padding(Constants.Pie.inset)
-                    )
-                    .padding(Constants.inset)
-
-            }
-                .opacity(card.isFaceUp ? 1 : 0)
-            baseRR.fill()
-                .opacity(card.isFaceUp ? 0 : 1)
-        }
-        .opacity(card.isFaceUp || !card.isMatched ? 1 : 0)
+        Pie(endAngle: .degrees(240))
+            .opacity(Constants.Pie.opacity)
+            .overlay(
+                Text(card.content)
+                    .font(.system(size: Constants.FontSize.largest))
+                    .minimumScaleFactor(Constants.FontSize.scaleFactor)
+                    .multilineTextAlignment(.center)
+                    .aspectRatio(1, contentMode: .fit)
+                    .padding(Constants.Pie.inset)
+            )
+            .padding(Constants.inset)
+            .cardify(isFaceUp: card.isFaceUp)
+            .opacity(card.isFaceUp || !card.isMatched ? 1 : 0)
     }
 }
 
