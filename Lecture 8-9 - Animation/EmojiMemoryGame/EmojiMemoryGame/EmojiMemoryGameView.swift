@@ -17,7 +17,7 @@ struct EmojiMemoryGameView: View {
             cards
                 .foregroundColor(viewModel.color)
             Button("Shuffle") {
-                withAnimation(.interactiveSpring(response: 1, dampingFraction: 0.5)) {
+                withAnimation {
                     viewModel.shuffle()
                 }
             }
@@ -30,7 +30,9 @@ struct EmojiMemoryGameView: View {
             CardView(card)
                 .padding(spacing)
                 .onTapGesture {
-                    viewModel.choose(card)
+                    withAnimation(.easeInOut(duration: 2)) {
+                        viewModel.choose(card)
+                    }
                 }
         }
     }
