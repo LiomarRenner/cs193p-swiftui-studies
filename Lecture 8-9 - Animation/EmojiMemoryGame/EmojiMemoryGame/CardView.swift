@@ -2,7 +2,7 @@
 //  CardView.swift
 //  EmojiMemoryGame
 //
-//  Created by Daniel Motta Ruiz Garcia on 18/06/25.
+//  Created by Liomar Renner on 18/06/25.
 //
 
 import SwiftUI
@@ -41,6 +41,8 @@ struct CardView: View {
                     .multilineTextAlignment(.center)
                     .aspectRatio(1, contentMode: .fit)
                     .padding(Constants.Pie.inset)
+                    .rotationEffect(.degrees((card.isMatched ? 360 : 0)))
+                    .animation(.spin(duration: 1), value: card.isMatched)
             )
             .padding(Constants.inset)
             .cardify(isFaceUp: card.isFaceUp)
@@ -48,11 +50,8 @@ struct CardView: View {
     }
 }
 
-#Preview {
-    HStack {
-        CardView(Card(isFaceUp: true, content: "X", id: "test1"))
-        CardView(Card(content: "X", id: "test2"))
+extension Animation {
+    static func spin(duration: TimeInterval) -> Animation {
+        .linear(duration: 1).repeatForever(autoreverses: false)
     }
-        .padding()
-        .foregroundColor(.green)
 }
