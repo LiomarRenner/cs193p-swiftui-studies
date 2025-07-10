@@ -37,6 +37,9 @@ struct FlyingNumber: View {
                         offset = number < 0 ? FlyingConstants.Animation.offsetPositive : FlyingConstants.Animation.offsetNegative
                     }
                 }
+                .onDisappear {
+                    offset = 0
+                }
         }
     }
 }
